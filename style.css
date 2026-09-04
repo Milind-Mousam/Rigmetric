@@ -1285,6 +1285,8 @@ header {
   z-index: 1;
 }
 
-.fps-box {
-  box-shadow: 0 0 35px rgba(124, 242, 154, 0.25);
+#fps {
+  text-shadow:
+    0 0 8px rgba(124, 242, 154, 0.35),
+    0 0 18px rgba(124, 242, 154, 0.18);
 }
