@@ -1075,3 +1075,44 @@ footer p {
     transform: none;
   }
 }
+
+/* =========================================
+   RigMetric UI Upgrade
+   Step 7 — Premium input fields
+   ========================================= */
+
+.field input {
+  min-height: 50px;
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-2);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.field input::placeholder {
+  color: #707986;
+}
+
+.field input:hover {
+  border-color: #394352;
+}
+
+.field input:focus {
+  border-color: var(--accent);
+  background: #1a2029;
+  box-shadow: 0 0 0 3px rgba(124, 242, 154, 0.1);
+}
+
+@media (max-width: 600px) {
+  .field input {
+    min-height: 52px;
+    font-size: 15px;
+  }
+}
