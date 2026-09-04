@@ -1036,3 +1036,7 @@ footer p {
   background: rgba(255, 255, 255, 0.055);
 }
 
+#fps {
+  color: var(--text);
+  -webkit-text-fill-color: var(--text);
+}
