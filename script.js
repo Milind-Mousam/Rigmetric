@@ -1,222 +1,383 @@
-  const games = {
+// ==========================================
+// RIGMETRIC - PC GAME PERFORMANCE CHECKER
+// ==========================================
+
+
+// ==========================================
+// GAME DATABASE
+// ==========================================
+
+const games = {
+
   "GTA V": {
-    baseGpu: 35, baseCpu: 35, baseRam: 8,
-    fps720: 55, fps1080: 42,
-    preset: "High", upscaling: "Optional"
+    baseGpu: 35,
+    baseCpu: 35,
+    baseRam: 8,
+    fps720: 55,
+    fps1080: 42,
+    preset: "High",
+    upscaling: "Optional"
   },
 
   "Red Dead Redemption 2": {
-    baseGpu: 55, baseCpu: 50, baseRam: 12,
-    fps720: 40, fps1080: 28,
-    preset: "Low / Medium", upscaling: "FSR Recommended"
+    baseGpu: 55,
+    baseCpu: 50,
+    baseRam: 12,
+    fps720: 40,
+    fps1080: 28,
+    preset: "Low / Medium",
+    upscaling: "FSR Recommended"
   },
 
   "Forza Horizon 4": {
-    baseGpu: 38, baseCpu: 35, baseRam: 8,
-    fps720: 60, fps1080: 45,
-    preset: "Medium / High", upscaling: "Optional"
+    baseGpu: 38,
+    baseCpu: 35,
+    baseRam: 8,
+    fps720: 60,
+    fps1080: 45,
+    preset: "Medium / High",
+    upscaling: "Optional"
   },
 
   "Forza Horizon 5": {
-    baseGpu: 48, baseCpu: 40, baseRam: 8,
-    fps720: 48, fps1080: 34,
-    preset: "Low / Medium", upscaling: "FSR Recommended"
+    baseGpu: 48,
+    baseCpu: 40,
+    baseRam: 8,
+    fps720: 48,
+    fps1080: 34,
+    preset: "Low / Medium",
+    upscaling: "FSR Recommended"
   },
 
   "Far Cry 5": {
-    baseGpu: 42, baseCpu: 40, baseRam: 8,
-    fps720: 50, fps1080: 36,
-    preset: "Medium", upscaling: "Optional"
+    baseGpu: 42,
+    baseCpu: 40,
+    baseRam: 8,
+    fps720: 50,
+    fps1080: 36,
+    preset: "Medium",
+    upscaling: "Optional"
   },
 
   "Assassin's Creed Unity": {
-    baseGpu: 46, baseCpu: 48, baseRam: 8,
-    fps720: 45, fps1080: 32,
-    preset: "Low / Medium", upscaling: "If Available"
+    baseGpu: 46,
+    baseCpu: 48,
+    baseRam: 8,
+    fps720: 45,
+    fps1080: 32,
+    preset: "Low / Medium",
+    upscaling: "If Available"
   },
 
   "Elden Ring": {
-    baseGpu: 48, baseCpu: 45, baseRam: 12,
-    fps720: 48, fps1080: 38,
-    preset: "Low / Medium", upscaling: "Optional"
+    baseGpu: 48,
+    baseCpu: 45,
+    baseRam: 12,
+    fps720: 48,
+    fps1080: 38,
+    preset: "Low / Medium",
+    upscaling: "Optional"
   },
 
   "Cyberpunk 2077": {
-    baseGpu: 60, baseCpu: 50, baseRam: 16,
-    fps720: 38, fps1080: 25,
-    preset: "Low", upscaling: "FSR / XeSS Recommended"
+    baseGpu: 60,
+    baseCpu: 50,
+    baseRam: 16,
+    fps720: 38,
+    fps1080: 25,
+    preset: "Low",
+    upscaling: "FSR / XeSS Recommended"
   },
 
   "VALORANT": {
-    baseGpu: 15, baseCpu: 25, baseRam: 8,
-    fps720: 140, fps1080: 110,
-    preset: "Low", upscaling: "Not Needed"
+    baseGpu: 15,
+    baseCpu: 25,
+    baseRam: 8,
+    fps720: 140,
+    fps1080: 110,
+    preset: "Low",
+    upscaling: "Not Needed"
   },
 
   "God of War": {
-    baseGpu: 52, baseCpu: 48, baseRam: 16,
-    fps720: 40, fps1080: 28,
-    preset: "Low", upscaling: "FSR Recommended"
+    baseGpu: 52,
+    baseCpu: 48,
+    baseRam: 16,
+    fps720: 40,
+    fps1080: 28,
+    preset: "Low",
+    upscaling: "FSR Recommended"
   },
 
   "Counter-Strike 2": {
-    baseGpu: 30, baseCpu: 45, baseRam: 8,
-    fps720: 120, fps1080: 85,
-    preset: "Low / Medium", upscaling: "FSR Optional"
+    baseGpu: 30,
+    baseCpu: 45,
+    baseRam: 8,
+    fps720: 120,
+    fps1080: 85,
+    preset: "Low / Medium",
+    upscaling: "FSR Optional"
   },
 
   "PUBG: BATTLEGROUNDS": {
-    baseGpu: 40, baseCpu: 45, baseRam: 8,
-    fps720: 75, fps1080: 55,
-    preset: "Low / Medium", upscaling: "FSR Recommended"
+    baseGpu: 40,
+    baseCpu: 45,
+    baseRam: 8,
+    fps720: 75,
+    fps1080: 55,
+    preset: "Low / Medium",
+    upscaling: "FSR Recommended"
   },
 
   "Apex Legends": {
-    baseGpu: 38, baseCpu: 42, baseRam: 8,
-    fps720: 85, fps1080: 65,
-    preset: "Low / Medium", upscaling: "FSR Optional"
+    baseGpu: 38,
+    baseCpu: 42,
+    baseRam: 8,
+    fps720: 85,
+    fps1080: 65,
+    preset: "Low / Medium",
+    upscaling: "FSR Optional"
   },
 
   "Overwatch 2": {
-    baseGpu: 32, baseCpu: 38, baseRam: 8,
-    fps720: 100, fps1080: 80,
-    preset: "Low / Medium", upscaling: "Not Needed"
+    baseGpu: 32,
+    baseCpu: 38,
+    baseRam: 8,
+    fps720: 100,
+    fps1080: 80,
+    preset: "Low / Medium",
+    upscaling: "Not Needed"
   },
 
   "Rainbow Six Siege": {
-    baseGpu: 35, baseCpu: 40, baseRam: 8,
-    fps720: 110, fps1080: 80,
-    preset: "Low / Medium", upscaling: "Optional"
+    baseGpu: 35,
+    baseCpu: 40,
+    baseRam: 8,
+    fps720: 110,
+    fps1080: 80,
+    preset: "Low / Medium",
+    upscaling: "Optional"
   },
 
   "Marvel Rivals": {
-    baseGpu: 55, baseCpu: 50, baseRam: 16,
-    fps720: 45, fps1080: 32,
-    preset: "Low", upscaling: "FSR / XeSS Recommended"
+    baseGpu: 55,
+    baseCpu: 50,
+    baseRam: 16,
+    fps720: 45,
+    fps1080: 32,
+    preset: "Low",
+    upscaling: "FSR / XeSS Recommended"
   },
 
   "Call of Duty: Warzone": {
-    baseGpu: 55, baseCpu: 50, baseRam: 16,
-    fps720: 50, fps1080: 35,
-    preset: "Low", upscaling: "FSR / DLSS Recommended"
+    baseGpu: 55,
+    baseCpu: 50,
+    baseRam: 16,
+    fps720: 50,
+    fps1080: 35,
+    preset: "Low",
+    upscaling: "FSR / DLSS Recommended"
   },
 
   "Rocket League": {
-    baseGpu: 25, baseCpu: 30, baseRam: 8,
-    fps720: 150, fps1080: 120,
-    preset: "High", upscaling: "Not Needed"
+    baseGpu: 25,
+    baseCpu: 30,
+    baseRam: 8,
+    fps720: 150,
+    fps1080: 120,
+    preset: "High",
+    upscaling: "Not Needed"
   },
 
   "Hogwarts Legacy": {
-    baseGpu: 58, baseCpu: 50, baseRam: 16,
-    fps720: 38, fps1080: 27,
-    preset: "Low", upscaling: "FSR / XeSS Recommended"
+    baseGpu: 58,
+    baseCpu: 50,
+    baseRam: 16,
+    fps720: 38,
+    fps1080: 27,
+    preset: "Low",
+    upscaling: "FSR / XeSS Recommended"
   },
 
   "Baldur's Gate 3": {
-    baseGpu: 48, baseCpu: 48, baseRam: 16,
-    fps720: 50, fps1080: 38,
-    preset: "Low / Medium", upscaling: "FSR Recommended"
+    baseGpu: 48,
+    baseCpu: 48,
+    baseRam: 16,
+    fps720: 50,
+    fps1080: 38,
+    preset: "Low / Medium",
+    upscaling: "FSR Recommended"
   },
 
   "Helldivers 2": {
-    baseGpu: 60, baseCpu: 55, baseRam: 16,
-    fps720: 38, fps1080: 27,
-    preset: "Low", upscaling: "FSR Recommended"
+    baseGpu: 60,
+    baseCpu: 55,
+    baseRam: 16,
+    fps720: 38,
+    fps1080: 27,
+    preset: "Low",
+    upscaling: "FSR Recommended"
   },
 
   "Black Myth: Wukong": {
-    baseGpu: 68, baseCpu: 55, baseRam: 16,
-    fps720: 32, fps1080: 22,
-    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+    baseGpu: 68,
+    baseCpu: 55,
+    baseRam: 16,
+    fps720: 32,
+    fps1080: 22,
+    preset: "Low",
+    upscaling: "FSR / DLSS / XeSS Recommended"
   },
 
   "Monster Hunter Wilds": {
-    baseGpu: 72, baseCpu: 58, baseRam: 16,
-    fps720: 30, fps1080: 20,
-    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+    baseGpu: 72,
+    baseCpu: 58,
+    baseRam: 16,
+    fps720: 30,
+    fps1080: 20,
+    preset: "Low",
+    upscaling: "FSR / DLSS / XeSS Recommended"
   },
 
   "Kingdom Come: Deliverance II": {
-    baseGpu: 68, baseCpu: 58, baseRam: 16,
-    fps720: 34, fps1080: 24,
-    preset: "Low", upscaling: "FSR / DLSS Recommended"
+    baseGpu: 68,
+    baseCpu: 58,
+    baseRam: 16,
+    fps720: 34,
+    fps1080: 24,
+    preset: "Low",
+    upscaling: "FSR / DLSS Recommended"
   },
 
   "Assassin's Creed Shadows": {
-    baseGpu: 70, baseCpu: 58, baseRam: 16,
-    fps720: 32, fps1080: 22,
-    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+    baseGpu: 70,
+    baseCpu: 58,
+    baseRam: 16,
+    fps720: 32,
+    fps1080: 22,
+    preset: "Low",
+    upscaling: "FSR / DLSS / XeSS Recommended"
   },
 
   "Starfield": {
-    baseGpu: 65, baseCpu: 55, baseRam: 16,
-    fps720: 35, fps1080: 25,
-    preset: "Low", upscaling: "FSR Recommended"
+    baseGpu: 65,
+    baseCpu: 55,
+    baseRam: 16,
+    fps720: 35,
+    fps1080: 25,
+    preset: "Low",
+    upscaling: "FSR Recommended"
   },
 
   "The Last of Us Part I": {
-    baseGpu: 65, baseCpu: 55, baseRam: 16,
-    fps720: 34, fps1080: 24,
-    preset: "Low", upscaling: "FSR Recommended"
+    baseGpu: 65,
+    baseCpu: 55,
+    baseRam: 16,
+    fps720: 34,
+    fps1080: 24,
+    preset: "Low",
+    upscaling: "FSR Recommended"
   },
 
   "God of War Ragnarök": {
-    baseGpu: 60, baseCpu: 52, baseRam: 16,
-    fps720: 38, fps1080: 27,
-    preset: "Low / Medium", upscaling: "FSR / DLSS / XeSS Recommended"
+    baseGpu: 60,
+    baseCpu: 52,
+    baseRam: 16,
+    fps720: 38,
+    fps1080: 27,
+    preset: "Low / Medium",
+    upscaling: "FSR / DLSS / XeSS Recommended"
   },
 
   "Dragon's Dogma 2": {
-    baseGpu: 72, baseCpu: 65, baseRam: 16,
-    fps720: 30, fps1080: 22,
-    preset: "Low", upscaling: "FSR / DLSS Recommended"
+    baseGpu: 72,
+    baseCpu: 65,
+    baseRam: 16,
+    fps720: 30,
+    fps1080: 22,
+    preset: "Low",
+    upscaling: "FSR / DLSS Recommended"
   },
 
   "Alan Wake 2": {
-    baseGpu: 75, baseCpu: 55, baseRam: 16,
-    fps720: 28, fps1080: 20,
-    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+    baseGpu: 75,
+    baseCpu: 55,
+    baseRam: 16,
+    fps720: 28,
+    fps1080: 20,
+    preset: "Low",
+    upscaling: "FSR / DLSS / XeSS Recommended"
   },
 
   "Silent Hill 2": {
-    baseGpu: 68, baseCpu: 55, baseRam: 16,
-    fps720: 32, fps1080: 23,
-    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+    baseGpu: 68,
+    baseCpu: 55,
+    baseRam: 16,
+    fps720: 32,
+    fps1080: 23,
+    preset: "Low",
+    upscaling: "FSR / DLSS / XeSS Recommended"
   },
 
   "DOOM: The Dark Ages": {
-    baseGpu: 72, baseCpu: 55, baseRam: 16,
-    fps720: 35, fps1080: 25,
-    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+    baseGpu: 72,
+    baseCpu: 55,
+    baseRam: 16,
+    fps720: 35,
+    fps1080: 25,
+    preset: "Low",
+    upscaling: "FSR / DLSS / XeSS Recommended"
   },
 
   "Clair Obscur: Expedition 33": {
-    baseGpu: 60, baseCpu: 50, baseRam: 16,
-    fps720: 40, fps1080: 28,
-    preset: "Low / Medium", upscaling: "FSR / DLSS / XeSS Recommended"
+    baseGpu: 60,
+    baseCpu: 50,
+    baseRam: 16,
+    fps720: 40,
+    fps1080: 28,
+    preset: "Low / Medium",
+    upscaling: "FSR / DLSS / XeSS Recommended"
   },
 
   "Battlefield 6": {
-    baseGpu: 60, baseCpu: 55, baseRam: 16,
-    fps720: 45, fps1080: 32,
-    preset: "Low", upscaling: "FSR / DLSS Recommended"
+    baseGpu: 60,
+    baseCpu: 55,
+    baseRam: 16,
+    fps720: 45,
+    fps1080: 32,
+    preset: "Low",
+    upscaling: "FSR / DLSS Recommended"
   },
 
   "Palworld": {
-    baseGpu: 50, baseCpu: 48, baseRam: 16,
-    fps720: 45, fps1080: 32,
-    preset: "Low / Medium", upscaling: "FSR Recommended"
+    baseGpu: 50,
+    baseCpu: 48,
+    baseRam: 16,
+    fps720: 45,
+    fps1080: 32,
+    preset: "Low / Medium",
+    upscaling: "FSR Recommended"
   },
 
   "Rust": {
-    baseGpu: 55, baseCpu: 55, baseRam: 16,
-    fps720: 45, fps1080: 32,
-    preset: "Low / Medium", upscaling: "Optional"
+    baseGpu: 55,
+    baseCpu: 55,
+    baseRam: 16,
+    fps720: 45,
+    fps1080: 32,
+    preset: "Low / Medium",
+    upscaling: "Optional"
   }
+
 };
 
+
+// ==========================================
+// GPU DATABASE
+// ==========================================
+
 const gpus = {
+
   "AMD Vega 3": 12,
   "AMD Vega 8": 20,
   "Intel UHD 620": 12,
@@ -280,11 +441,19 @@ const gpus = {
   "Intel Arc A380": 35,
   "Intel Arc A750": 62,
   "Intel Arc A770": 70
+
 };
 
+
+// ==========================================
+// CPU DATABASE
+// ==========================================
+
 const cpus = {
+
   "AMD Athlon / entry-level": 18,
   "AMD Ryzen 3 3250U": 22,
+
   "Intel Celeron / Pentium (older)": 20,
   "Intel Core i3 (older)": 22,
   "Intel Core i5 (older)": 38,
@@ -315,7 +484,7 @@ const cpus = {
 
   "AMD Ryzen 5 9600X / similar": 78,
   "AMD Ryzen 7 9700X / similar": 88,
-  "AMD Ryzen 7 9800X3D / similar": 95,
+  "AMD Ryzen 7 9800X3D": 95,
 
   "Intel Core i5-14600K / similar": 82,
   "Intel Core i7-14700K / similar": 92,
@@ -327,8 +496,20 @@ const cpus = {
 
   "AMD Ryzen 5 (modern)": 55,
   "AMD Ryzen 7 (modern)": 68
+
 };
+
+
+// ==========================================
+// RAM
+// ==========================================
+
 const ramOptions = [4, 8, 12, 16, 32];
+
+
+// ==========================================
+// DOM ELEMENTS
+// ==========================================
 
 const gpuSearch = document.getElementById("gpuSearch");
 const gpuResults = document.getElementById("gpuResults");
@@ -336,103 +517,11 @@ const gpuResults = document.getElementById("gpuResults");
 const cpuSearch = document.getElementById("cpuSearch");
 const cpuResults = document.getElementById("cpuResults");
 
-const ramSelect = document.getElementById("ram");
-
 const gameSearch = document.getElementById("gameSearch");
 const gameResults = document.getElementById("gameResults");
 
+const ramSelect = document.getElementById("ram");
 const resolutionSelect = document.getElementById("resolution");
-
-// Currently selected hardware/game
-let selectedGpu = null;
-let selectedCpu = null;
-let selectedGame = null;
-
-// Search and selection system
-
-function setupSearch(input, resultsBox, items, onSelect) {
-  function showResults(query = "") {
-    const searchTerm = query.toLowerCase().trim();
-
-    const matches = Object.keys(items).filter(item =>
-      item.toLowerCase().includes(searchTerm)
-    );
-
-    resultsBox.innerHTML = "";
-
-    matches.slice(0, 8).forEach(item => {
-      const result = document.createElement("div");
-
-      result.className = "search-result-item";
-      result.textContent = item;
-
-      result.addEventListener("mousedown", (event) => {
-        event.preventDefault();
-
-        input.value = item;
-        onSelect(item);
-
-        resultsBox.style.display = "none";
-      });
-
-      resultsBox.appendChild(result);
-    });
-
-    if (matches.length > 0) {
-      resultsBox.style.display = "block";
-    } else {
-      resultsBox.style.display = "none";
-    }
-  }
-
-  input.addEventListener("input", () => {
-    onSelect(null);
-    showResults(input.value);
-  });
-
-  input.addEventListener("focus", () => {
-    showResults(input.value);
-  });
-
-  input.addEventListener("blur", () => {
-    setTimeout(() => {
-      resultsBox.style.display = "none";
-    }, 200);
-  });
-}
-
-
-// GPU search
-setupSearch(
-  gpuSearch,
-  gpuResults,
-  gpus,
-  (value) => {
-    selectedGpu = value;
-  }
-);
-
-
-// CPU search
-setupSearch(
-  cpuSearch,
-  cpuResults,
-  cpus,
-  (value) => {
-    selectedCpu = value;
-  }
-);
-
-
-// Game search
-setupSearch(
-  gameSearch,
-  gameResults,
-  games,
-  (value) => {
-    selectedGame = value;
-  }
-);
 
 const checkButton = document.getElementById("checkBtn");
 
@@ -449,36 +538,211 @@ const resultGpu = document.getElementById("resultGpu");
 const resultCpu = document.getElementById("resultCpu");
 const explanationText = document.getElementById("explanationText");
 
-function calculateFPS(game, gpuScore, cpuScore, ram, resolution) {
+
+// ==========================================
+// SELECTED VALUES
+// ==========================================
+
+let selectedGpu = null;
+let selectedCpu = null;
+let selectedGame = null;
+
+
+// ==========================================
+// SEARCH SYSTEM
+// ==========================================
+
+function setupSearch(input, resultsBox, items, onSelect) {
+
+  if (!input || !resultsBox) {
+    return;
+  }
+
+  function showResults(query = "") {
+
+    const searchTerm = query.toLowerCase().trim();
+
+    const matches = Object.keys(items).filter(item =>
+      item.toLowerCase().includes(searchTerm)
+    );
+
+    resultsBox.innerHTML = "";
+
+    if (matches.length === 0) {
+      resultsBox.style.display = "none";
+      return;
+    }
+
+    matches.slice(0, 8).forEach(item => {
+
+      const resultItem = document.createElement("div");
+
+      resultItem.className = "search-result-item";
+      resultItem.textContent = item;
+
+      resultItem.addEventListener("mousedown", event => {
+
+        event.preventDefault();
+
+        input.value = item;
+
+        onSelect(item);
+
+        resultsBox.style.display = "none";
+
+      });
+
+      resultsBox.appendChild(resultItem);
+
+    });
+
+    resultsBox.style.display = "block";
+
+  }
+
+
+  input.addEventListener("input", () => {
+
+    onSelect(null);
+
+    showResults(input.value);
+
+  });
+
+
+  input.addEventListener("focus", () => {
+
+    showResults(input.value);
+
+  });
+
+
+  input.addEventListener("blur", () => {
+
+    setTimeout(() => {
+
+      resultsBox.style.display = "none";
+
+    }, 200);
+
+  });
+
+}
+
+
+// ==========================================
+// GPU SEARCH
+// ==========================================
+
+setupSearch(
+  gpuSearch,
+  gpuResults,
+  gpus,
+  value => {
+    selectedGpu = value;
+  }
+);
+
+
+// ==========================================
+// CPU SEARCH
+// ==========================================
+
+setupSearch(
+  cpuSearch,
+  cpuResults,
+  cpus,
+  value => {
+    selectedCpu = value;
+  }
+);
+
+
+// ==========================================
+// GAME SEARCH
+// ==========================================
+
+setupSearch(
+  gameSearch,
+  gameResults,
+  games,
+  value => {
+    selectedGame = value;
+  }
+);
+
+
+// ==========================================
+// FPS CALCULATION
+// ==========================================
+
+function calculateFPS(
+  game,
+  gpuScore,
+  cpuScore,
+  ram,
+  resolution
+) {
+
   const gpuRatio = gpuScore / game.baseGpu;
   const cpuRatio = cpuScore / game.baseCpu;
 
-  let multiplier = Math.min(gpuRatio, cpuRatio);
+  let multiplier = Math.min(
+    gpuRatio,
+    cpuRatio
+  );
 
-  multiplier = Math.max(0.28, Math.min(multiplier, 1.45));
+  multiplier = Math.max(
+    0.28,
+    Math.min(multiplier, 1.45)
+  );
+
 
   let estimatedFPS =
     resolution === "720p"
       ? game.fps720 * multiplier
       : game.fps1080 * multiplier;
 
+
+  // RAM penalty
   if (ram < game.baseRam) {
+
     estimatedFPS *= 0.82;
-  } else if (ram >= game.baseRam + 8) {
+
+  }
+
+  // Small RAM advantage
+  else if (ram >= game.baseRam + 8) {
+
     estimatedFPS *= 1.03;
+
   }
 
-  if (game === games["VALORANT"] && cpuScore < 35) {
+
+  // Extra CPU sensitivity for Valorant
+  if (
+    game === games["VALORANT"] &&
+    cpuScore < 35
+  ) {
+
     estimatedFPS *= 0.72;
+
   }
 
-  return Math.max(5, estimatedFPS);
+
+  return Math.max(
+    5,
+    estimatedFPS
+  );
+
 }
 
+
+// ==========================================
+// PLAYABILITY STATUS
+// ==========================================
+
 function getStatus(estimatedFPS) {
-  if (estimatedFPS >= 60) {
-    return "PLAYABLE";
-  }
 
   if (estimatedFPS >= 30) {
     return "PLAYABLE";
@@ -489,9 +753,19 @@ function getStatus(estimatedFPS) {
   }
 
   return "NOT RECOMMENDED";
+
 }
 
-function getPreset(game, estimatedFPS) {
+
+// ==========================================
+// RECOMMENDED GRAPHICS PRESET
+// ==========================================
+
+function getPreset(
+  game,
+  estimatedFPS
+) {
+
   if (estimatedFPS < 20) {
     return "Very Low / Lowest";
   }
@@ -501,152 +775,239 @@ function getPreset(game, estimatedFPS) {
   }
 
   return game.preset;
+
 }
 
-function getLimitation(game, gpuScore, cpuScore, ram) {
-  const gpuRatio = gpuScore / game.baseGpu;
-  const cpuRatio = cpuScore / game.baseCpu;
+
+// ==========================================
+// MAIN PERFORMANCE LIMITATION
+// ==========================================
+
+function getLimitation(
+  game,
+  gpuScore,
+  cpuScore,
+  ram
+) {
+
+  const gpuRatio =
+    gpuScore / game.baseGpu;
+
+  const cpuRatio =
+    cpuScore / game.baseCpu;
+
 
   if (ram < game.baseRam) {
     return "RAM";
   }
 
+
   if (cpuRatio < gpuRatio * 0.9) {
     return "CPU";
   }
 
+
   return "GPU";
+
 }
 
-checkButton.addEventListener("click", () => {
-  const gpuName = selectedGpu;
-  const cpuName = selectedCpu;
-  const gameName = selectedGame;
-  const ram = Number(ramSelect.value);
-  const resolution = resolutionSelect.value;
 
-  // Make sure the user selected valid search results
-  if (!gpuName || !cpuName || !gameName) {
-    alert("Please select a GPU, CPU, and game from the search results.");
-    return;
-  }
+// ==========================================
+// CHECK PERFORMANCE
+// ==========================================
 
-  const game = games[gameName];
-  const gpuScore = gpus[gpuName];
-  const cpuScore = cpus[cpuName];
+if (checkButton) {
 
-  const estimatedFPS = calculateFPS(
-    game,
-    gpuScore,
-    cpuScore,
-    ram,
-    resolution
+  checkButton.addEventListener(
+    "click",
+    () => {
+
+      const gpuName = selectedGpu;
+      const cpuName = selectedCpu;
+      const gameName = selectedGame;
+
+      const ram =
+        Number(ramSelect.value);
+
+      const resolution =
+        resolutionSelect.value;
+
+
+      // Validate selections
+      if (
+        !gpuName ||
+        !cpuName ||
+        !gameName
+      ) {
+
+        alert(
+          "Please select a GPU, CPU, and game from the search results."
+        );
+
+        return;
+
+      }
+
+
+      const game =
+        games[gameName];
+
+      const gpuScore =
+        gpus[gpuName];
+
+      const cpuScore =
+        cpus[cpuName];
+
+
+      if (
+        !game ||
+        gpuScore === undefined ||
+        cpuScore === undefined
+      ) {
+
+        alert(
+          "Something went wrong with the selected hardware or game."
+        );
+
+        return;
+
+      }
+
+
+      // Calculate FPS
+      const estimatedFPS =
+        calculateFPS(
+          game,
+          gpuScore,
+          cpuScore,
+          ram,
+          resolution
+        );
+
+
+      // FPS range
+      const lowFPS =
+        Math.max(
+          1,
+          Math.round(
+            estimatedFPS * 0.9
+          )
+        );
+
+
+      const highFPS =
+        Math.round(
+          estimatedFPS * 1.1
+        );
+
+
+      // Other results
+      const gameStatus =
+        getStatus(estimatedFPS);
+
+      const recommendedPreset =
+        getPreset(
+          game,
+          estimatedFPS
+        );
+
+      const mainLimitation =
+        getLimitation(
+          game,
+          gpuScore,
+          cpuScore,
+          ram
+        );
+
+
+      // Game
+      resultGame.textContent =
+        gameName;
+
+
+      // Status
+      status.textContent =
+        gameStatus;
+
+      status.className =
+        "status " +
+        gameStatus
+          .toLowerCase()
+          .replaceAll(
+            " ",
+            "-"
+          );
+
+
+      // Resolution
+      resultResolution.textContent =
+        resolution === "720p"
+          ? "1280 × 720"
+          : "1920 × 1080";
+
+
+      // FPS
+      fps.textContent =
+        `${lowFPS}–${highFPS}`;
+
+
+      // Preset
+      preset.textContent =
+        recommendedPreset;
+
+
+      // Upscaling
+      upscaling.textContent =
+        game.upscaling;
+
+
+      // Limitation
+      limitation.textContent =
+        mainLimitation;
+
+
+      // RAM
+      ramCheck.textContent =
+        ram < game.baseRam
+          ? "Below target"
+          : "OK";
+
+
+      // Hardware
+      resultGpu.textContent =
+        gpuName;
+
+      resultCpu.textContent =
+        cpuName;
+
+
+      // Explanation
+      explanationText.textContent =
+        `Based on your ${gpuName}, ${cpuName}, ${ram} GB RAM, ` +
+        `and ${resolution === "720p" ? "720p" : "1080p"} resolution, ` +
+        `RigMetric estimates around ${lowFPS}–${highFPS} FPS. ` +
+        `The main limitation is likely your ${mainLimitation}. ` +
+        `Actual performance can vary depending on drivers, game updates, ` +
+        `thermal conditions, power limits, background applications, ` +
+        `and in-game settings.`;
+
+
+      // Show result
+      result.hidden = false;
+
+
+      // Scroll to result
+      result.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }
   );
 
-  const lowFPS = Math.max(1, Math.round(estimatedFPS * 0.9));
-  const highFPS = Math.round(estimatedFPS * 1.1);
+}
 
-  const gameStatus = getStatus(estimatedFPS);
-  const recommendedPreset = getPreset(game, estimatedFPS);
-  const mainLimitation = getLimitation(
-    game,
-    gpuScore,
-    cpuScore,
-    ram
-  );
 
-  resultGame.textContent = gameName;
-
-  status.textContent = gameStatus;
-  status.className =
-    "status " + gameStatus.toLowerCase().replaceAll(" ", "-");
-
-  resultResolution.textContent =
-    resolution === "720p"
-      ? "1280 × 720"
-      : "1920 × 1080";
-
-  fps.textContent = `${lowFPS}–${highFPS}`;
-
-  preset.textContent = recommendedPreset;
-  upscaling.textContent = game.upscaling;
-  limitation.textContent = mainLimitation;
-
-  ramCheck.textContent =
-    ram < game.baseRam
-      ? "Below target"
-      : "OK";
-
-  resultGpu.textContent = gpuName;
-  resultCpu.textContent = cpuName;
-
-  explanationText.textContent =
-    `Based on your ${gpuName}, ${cpuName}, ${ram} GB RAM, ` +
-    `and ${resolution === "720p" ? "720p" : "1080p"} resolution, ` +
-    `RigMetric estimates around ${lowFPS}–${highFPS} FPS. ` +
-    `The main limitation is likely your ${mainLimitation}. ` +
-    `Actual performance can vary depending on drivers, game updates, ` +
-    `thermal conditions, power limits, background applications, ` +
-    `and in-game settings.`;
-
-  result.hidden = false;
-
-  result.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-});
-  );
-
-  const lowFPS = Math.max(1, Math.round(estimatedFPS * 0.9));
-  const highFPS = Math.round(estimatedFPS * 1.1);
-
-  const gameStatus = getStatus(estimatedFPS);
-  const recommendedPreset = getPreset(game, estimatedFPS);
-  const mainLimitation = getLimitation(
-    game,
-    gpuScore,
-    cpuScore,
-    ram
-  );
-
-  resultGame.textContent = gameName;
-
-  status.textContent = gameStatus;
-  status.className = "status " + gameStatus.toLowerCase().replaceAll(" ", "-");
-
-  resultResolution.textContent =
-    resolution === "720p"
-      ? "1280 × 720"
-      : "1920 × 1080";
-
-  fps.textContent = `${lowFPS}–${highFPS}`;
-
-  preset.textContent = recommendedPreset;
-  upscaling.textContent = game.upscaling;
-  limitation.textContent = mainLimitation;
-
-  ramCheck.textContent =
-    ram < game.baseRam
-      ? "Below target"
-      : "OK";
-
-  resultGpu.textContent = gpuName;
-  resultCpu.textContent = cpuName;
-
-  explanationText.textContent =
-    `Based on your ${gpuName}, ${cpuName}, ${ram} GB RAM, ` +
-    `and ${resolution === "720p" ? "720p" : "1080p"} resolution, ` +
-    `RigMetric estimates around ${lowFPS}–${highFPS} FPS. ` +
-    `The main limitation is likely your ${mainLimitation}. ` +
-    `Actual performance can vary depending on drivers, game updates, ` +
-    `thermal conditions, power limits, background applications, ` +
-    `and in-game settings.`;
-
-  result.hidden = false;
-
-  result.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-});
+// ==========================================
+// END OF RIGMETRIC SCRIPT
+// ==========================================
