@@ -1255,3 +1255,32 @@ header {
     transform: none;
   }
 }
+
+/* =========================================
+   RigMetric UI Upgrade
+   Step 11 — FPS highlight
+   ========================================= */
+
+.fps-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.fps-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(124, 242, 154, 0.10),
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+.fps-box .fps,
+.fps-box .fps-label,
+.fps-box .fps-unit {
+  position: relative;
+  z-index: 1;
+}
