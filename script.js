@@ -1,93 +1,218 @@
-const games = {
+  const games = {
   "GTA V": {
-    baseGpu: 35,
-    baseCpu: 35,
-    baseRam: 8,
-    fps720: 55,
-    fps1080: 42,
-    preset: "High",
-    upscaling: "Optional"
+    baseGpu: 35, baseCpu: 35, baseRam: 8,
+    fps720: 55, fps1080: 42,
+    preset: "High", upscaling: "Optional"
   },
+
   "Red Dead Redemption 2": {
-    baseGpu: 55,
-    baseCpu: 50,
-    baseRam: 12,
-    fps720: 40,
-    fps1080: 28,
-    preset: "Low / Medium",
-    upscaling: "FSR Recommended"
+    baseGpu: 55, baseCpu: 50, baseRam: 12,
+    fps720: 40, fps1080: 28,
+    preset: "Low / Medium", upscaling: "FSR Recommended"
   },
+
   "Forza Horizon 4": {
-    baseGpu: 38,
-    baseCpu: 35,
-    baseRam: 8,
-    fps720: 60,
-    fps1080: 45,
-    preset: "Medium / High",
-    upscaling: "Optional"
+    baseGpu: 38, baseCpu: 35, baseRam: 8,
+    fps720: 60, fps1080: 45,
+    preset: "Medium / High", upscaling: "Optional"
   },
+
   "Forza Horizon 5": {
-    baseGpu: 48,
-    baseCpu: 40,
-    baseRam: 8,
-    fps720: 48,
-    fps1080: 34,
-    preset: "Low / Medium",
-    upscaling: "FSR Recommended"
+    baseGpu: 48, baseCpu: 40, baseRam: 8,
+    fps720: 48, fps1080: 34,
+    preset: "Low / Medium", upscaling: "FSR Recommended"
   },
+
   "Far Cry 5": {
-    baseGpu: 42,
-    baseCpu: 40,
-    baseRam: 8,
-    fps720: 50,
-    fps1080: 36,
-    preset: "Medium",
-    upscaling: "Optional"
+    baseGpu: 42, baseCpu: 40, baseRam: 8,
+    fps720: 50, fps1080: 36,
+    preset: "Medium", upscaling: "Optional"
   },
+
   "Assassin's Creed Unity": {
-    baseGpu: 46,
-    baseCpu: 48,
-    baseRam: 8,
-    fps720: 45,
-    fps1080: 32,
-    preset: "Low / Medium",
-    upscaling: "If Available"
+    baseGpu: 46, baseCpu: 48, baseRam: 8,
+    fps720: 45, fps1080: 32,
+    preset: "Low / Medium", upscaling: "If Available"
   },
+
   "Elden Ring": {
-    baseGpu: 48,
-    baseCpu: 45,
-    baseRam: 12,
-    fps720: 48,
-    fps1080: 38,
-    preset: "Low / Medium",
-    upscaling: "Optional"
+    baseGpu: 48, baseCpu: 45, baseRam: 12,
+    fps720: 48, fps1080: 38,
+    preset: "Low / Medium", upscaling: "Optional"
   },
+
   "Cyberpunk 2077": {
-    baseGpu: 60,
-    baseCpu: 50,
-    baseRam: 16,
-    fps720: 38,
-    fps1080: 25,
-    preset: "Low",
-    upscaling: "FSR / XeSS Recommended"
+    baseGpu: 60, baseCpu: 50, baseRam: 16,
+    fps720: 38, fps1080: 25,
+    preset: "Low", upscaling: "FSR / XeSS Recommended"
   },
+
   "VALORANT": {
-    baseGpu: 15,
-    baseCpu: 25,
-    baseRam: 8,
-    fps720: 140,
-    fps1080: 110,
-    preset: "Low",
-    upscaling: "Not Needed"
+    baseGpu: 15, baseCpu: 25, baseRam: 8,
+    fps720: 140, fps1080: 110,
+    preset: "Low", upscaling: "Not Needed"
   },
+
   "God of War": {
-    baseGpu: 52,
-    baseCpu: 48,
-    baseRam: 16,
-    fps720: 40,
-    fps1080: 28,
-    preset: "Low",
-    upscaling: "FSR Recommended"
+    baseGpu: 52, baseCpu: 48, baseRam: 16,
+    fps720: 40, fps1080: 28,
+    preset: "Low", upscaling: "FSR Recommended"
+  },
+
+  "Counter-Strike 2": {
+    baseGpu: 30, baseCpu: 45, baseRam: 8,
+    fps720: 120, fps1080: 85,
+    preset: "Low / Medium", upscaling: "FSR Optional"
+  },
+
+  "PUBG: BATTLEGROUNDS": {
+    baseGpu: 40, baseCpu: 45, baseRam: 8,
+    fps720: 75, fps1080: 55,
+    preset: "Low / Medium", upscaling: "FSR Recommended"
+  },
+
+  "Apex Legends": {
+    baseGpu: 38, baseCpu: 42, baseRam: 8,
+    fps720: 85, fps1080: 65,
+    preset: "Low / Medium", upscaling: "FSR Optional"
+  },
+
+  "Overwatch 2": {
+    baseGpu: 32, baseCpu: 38, baseRam: 8,
+    fps720: 100, fps1080: 80,
+    preset: "Low / Medium", upscaling: "Not Needed"
+  },
+
+  "Rainbow Six Siege": {
+    baseGpu: 35, baseCpu: 40, baseRam: 8,
+    fps720: 110, fps1080: 80,
+    preset: "Low / Medium", upscaling: "Optional"
+  },
+
+  "Marvel Rivals": {
+    baseGpu: 55, baseCpu: 50, baseRam: 16,
+    fps720: 45, fps1080: 32,
+    preset: "Low", upscaling: "FSR / XeSS Recommended"
+  },
+
+  "Call of Duty: Warzone": {
+    baseGpu: 55, baseCpu: 50, baseRam: 16,
+    fps720: 50, fps1080: 35,
+    preset: "Low", upscaling: "FSR / DLSS Recommended"
+  },
+
+  "Rocket League": {
+    baseGpu: 25, baseCpu: 30, baseRam: 8,
+    fps720: 150, fps1080: 120,
+    preset: "High", upscaling: "Not Needed"
+  },
+
+  "Hogwarts Legacy": {
+    baseGpu: 58, baseCpu: 50, baseRam: 16,
+    fps720: 38, fps1080: 27,
+    preset: "Low", upscaling: "FSR / XeSS Recommended"
+  },
+
+  "Baldur's Gate 3": {
+    baseGpu: 48, baseCpu: 48, baseRam: 16,
+    fps720: 50, fps1080: 38,
+    preset: "Low / Medium", upscaling: "FSR Recommended"
+  },
+
+  "Helldivers 2": {
+    baseGpu: 60, baseCpu: 55, baseRam: 16,
+    fps720: 38, fps1080: 27,
+    preset: "Low", upscaling: "FSR Recommended"
+  },
+
+  "Black Myth: Wukong": {
+    baseGpu: 68, baseCpu: 55, baseRam: 16,
+    fps720: 32, fps1080: 22,
+    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+  },
+
+  "Monster Hunter Wilds": {
+    baseGpu: 72, baseCpu: 58, baseRam: 16,
+    fps720: 30, fps1080: 20,
+    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+  },
+
+  "Kingdom Come: Deliverance II": {
+    baseGpu: 68, baseCpu: 58, baseRam: 16,
+    fps720: 34, fps1080: 24,
+    preset: "Low", upscaling: "FSR / DLSS Recommended"
+  },
+
+  "Assassin's Creed Shadows": {
+    baseGpu: 70, baseCpu: 58, baseRam: 16,
+    fps720: 32, fps1080: 22,
+    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+  },
+
+  "Starfield": {
+    baseGpu: 65, baseCpu: 55, baseRam: 16,
+    fps720: 35, fps1080: 25,
+    preset: "Low", upscaling: "FSR Recommended"
+  },
+
+  "The Last of Us Part I": {
+    baseGpu: 65, baseCpu: 55, baseRam: 16,
+    fps720: 34, fps1080: 24,
+    preset: "Low", upscaling: "FSR Recommended"
+  },
+
+  "God of War Ragnarök": {
+    baseGpu: 60, baseCpu: 52, baseRam: 16,
+    fps720: 38, fps1080: 27,
+    preset: "Low / Medium", upscaling: "FSR / DLSS / XeSS Recommended"
+  },
+
+  "Dragon's Dogma 2": {
+    baseGpu: 72, baseCpu: 65, baseRam: 16,
+    fps720: 30, fps1080: 22,
+    preset: "Low", upscaling: "FSR / DLSS Recommended"
+  },
+
+  "Alan Wake 2": {
+    baseGpu: 75, baseCpu: 55, baseRam: 16,
+    fps720: 28, fps1080: 20,
+    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+  },
+
+  "Silent Hill 2": {
+    baseGpu: 68, baseCpu: 55, baseRam: 16,
+    fps720: 32, fps1080: 23,
+    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+  },
+
+  "DOOM: The Dark Ages": {
+    baseGpu: 72, baseCpu: 55, baseRam: 16,
+    fps720: 35, fps1080: 25,
+    preset: "Low", upscaling: "FSR / DLSS / XeSS Recommended"
+  },
+
+  "Clair Obscur: Expedition 33": {
+    baseGpu: 60, baseCpu: 50, baseRam: 16,
+    fps720: 40, fps1080: 28,
+    preset: "Low / Medium", upscaling: "FSR / DLSS / XeSS Recommended"
+  },
+
+  "Battlefield 6": {
+    baseGpu: 60, baseCpu: 55, baseRam: 16,
+    fps720: 45, fps1080: 32,
+    preset: "Low", upscaling: "FSR / DLSS Recommended"
+  },
+
+  "Palworld": {
+    baseGpu: 50, baseCpu: 48, baseRam: 16,
+    fps720: 45, fps1080: 32,
+    preset: "Low / Medium", upscaling: "FSR Recommended"
+  },
+
+  "Rust": {
+    baseGpu: 55, baseCpu: 55, baseRam: 16,
+    fps720: 45, fps1080: 32,
+    preset: "Low / Medium", upscaling: "Optional"
   }
 };
 
