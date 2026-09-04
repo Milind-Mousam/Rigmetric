@@ -684,20 +684,74 @@ function calculateFPS(
   resolution
 ) {
 
-  const gpuRatio = gpuScore / game.baseGpu;
-  const cpuRatio = cpuScore / game.baseCpu;
+  // Compare the selected hardware with the game's target hardware
+  const gpuRatio =
+    gpuScore / game.baseGpu;
 
-  let multiplier = Math.min(
-    gpuRatio,
-    cpuRatio
-  );
+  const cpuRatio =
+    cpuScore / game.baseCpu;
 
+
+  // Most games are primarily limited by either GPU or CPU.
+  // We use a weighted combination instead of always taking
+  // whichever ratio is lower.
+  let gpuWeight = 0.65;
+  let cpuWeight = 0.35;
+
+
+  // CPU-sensitive games
+  const cpuSensitiveGames = [
+    "VALORANT",
+    "Counter-Strike 2",
+    "PUBG: BATTLEGROUNDS",
+    "Apex Legends",
+    "Overwatch 2",
+    "Rainbow Six Siege",
+    "Rocket League",
+    "Rust"
+  ];
+
+
+  if (cpuSensitiveGames.includes(game.name)) {
+    gpuWeight = 0.45;
+    cpuWeight = 0.55;
+  }
+
+
+  // GPU-heavy games
+  const gpuHeavyGames = [
+    "Cyberpunk 2077",
+    "Hogwarts Legacy",
+    "Black Myth: Wukong",
+    "Monster Hunter Wilds",
+    "Alan Wake 2",
+    "Silent Hill 2",
+    "DOOM: The Dark Ages",
+    "God of War",
+    "God of War Ragnarök"
+  ];
+
+
+  if (gpuHeavyGames.includes(game.name)) {
+    gpuWeight = 0.75;
+    cpuWeight = 0.25;
+  }
+
+
+  // Combined hardware performance
+  let multiplier =
+    (gpuRatio * gpuWeight) +
+    (cpuRatio * cpuWeight);
+
+
+  // Prevent extreme results
   multiplier = Math.max(
     0.28,
     Math.min(multiplier, 1.45)
   );
 
 
+  // Resolution scaling
   let estimatedFPS =
     resolution === "720p"
       ? game.fps720 * multiplier
@@ -707,11 +761,19 @@ function calculateFPS(
   // RAM penalty
   if (ram < game.baseRam) {
 
-    estimatedFPS *= 0.82;
+    const ramDeficit =
+      game.baseRam - ram;
+
+    // Larger RAM shortages receive a stronger penalty
+    if (ramDeficit >= 8) {
+      estimatedFPS *= 0.72;
+    } else {
+      estimatedFPS *= 0.84;
+    }
 
   }
 
-  // Small RAM advantage
+  // Small benefit when comfortably above the game's RAM target
   else if (ram >= game.baseRam + 8) {
 
     estimatedFPS *= 1.03;
@@ -719,14 +781,13 @@ function calculateFPS(
   }
 
 
-  // Extra CPU sensitivity for Valorant
-  if (
-    game === games["VALORANT"] &&
-    cpuScore < 35
-  ) {
+  // Integrated graphics are especially sensitive to memory bandwidth
+  const integratedGPU =
+    gpuNameIsIntegrated(gpuScore);
 
-    estimatedFPS *= 0.72;
 
+  if (integratedGPU && ram <= 8) {
+    estimatedFPS *= 0.90;
   }
 
 
