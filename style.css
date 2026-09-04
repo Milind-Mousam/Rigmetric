@@ -894,3 +894,85 @@ footer p {
     font-size: 12.5px;
   }
 }
+
+/* =========================================
+   RigMetric UI Upgrade
+   Step 4 — Premium search dropdowns
+   ========================================= */
+
+.search-results {
+  margin-top: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
+  background: #111;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 240px;
+}
+
+/* Individual search result */
+.search-result-item {
+  padding: 13px 15px;
+  color: #e8e8e8;
+  font-size: 14px;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    padding-left 0.15s ease;
+}
+
+/* Remove divider from the final result */
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+/* Hover effect */
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  padding-left: 18px;
+}
+
+/* Click/touch feedback */
+.search-result-item:active {
+  background: rgba(255, 255, 255, 0.11);
+}
+
+/* Search scrollbar */
+.search-results::-webkit-scrollbar {
+  width: 7px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .search-result-item {
+    padding: 15px;
+    font-size: 15px;
+  }
+
+  .search-result-item:hover {
+    padding-left: 15px;
+  }
+
+  .search-results {
+    max-height: 250px;
+    border-radius: 11px;
+  }
+  }
