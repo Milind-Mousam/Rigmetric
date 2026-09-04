@@ -348,19 +348,84 @@ let selectedGpu = null;
 let selectedCpu = null;
 let selectedGame = null;
 
-Object.keys(cpus).forEach(cpu => {
-  const option = document.createElement("option");
-  option.value = cpu;
-  option.textContent = cpu;
-  cpuSelect.appendChild(option);
-});
+// Search and selection system
 
-ramOptions.forEach(ram => {
-  const option = document.createElement("option");
-  option.value = ram;
-  option.textContent = `${ram} GB`;
-  ramSelect.appendChild(option);
-});
+function setupSearch(input, resultsBox, items, onSelect) {
+  function showResults(query = "") {
+    const searchTerm = query.toLowerCase().trim();
+
+    const matches = Object.keys(items).filter(item =>
+      item.toLowerCase().includes(searchTerm)
+    );
+
+    resultsBox.innerHTML = "";
+
+    matches.slice(0, 8).forEach(item => {
+      const result = document.createElement("div");
+      result.className = "search-result-item";
+      result.textContent = item;
+
+      result.addEventListener("mousedown", (event) => {
+        event.preventDefault();
+        input.value = item;
+        onSelect(item);
+        resultsBox.innerHTML = "";
+      });
+
+      resultsBox.appendChild(result);
+    });
+
+    resultsBox.style.display = matches.length ? "block" : "none";
+  }
+
+  input.addEventListener("input", () => {
+    onSelect(null);
+    showResults(input.value);
+  });
+
+  input.addEventListener("focus", () => {
+    showResults(input.value);
+  });
+
+  input.addEventListener("blur", () => {
+    setTimeout(() => {
+      resultsBox.style.display = "none";
+    }, 150);
+  });
+}
+
+
+// GPU search
+setupSearch(
+  gpuSearch,
+  gpuResults,
+  gpus,
+  (value) => {
+    selectedGpu = value;
+  }
+);
+
+
+// CPU search
+setupSearch(
+  cpuSearch,
+  cpuResults,
+  cpus,
+  (value) => {
+    selectedCpu = value;
+  }
+);
+
+
+// Game search
+setupSearch(
+  gameSearch,
+  gameResults,
+  games,
+  (value) => {
+    selectedGame = value;
+  }
+);
 
 Object.keys(games).forEach(game => {
   const option = document.createElement("option");
