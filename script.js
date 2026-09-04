@@ -346,7 +346,7 @@ const resolutionSelect = document.getElementById("resolution");
 // Currently selected hardware/game
 let selectedGpu = null;
 let selectedCpu = null;
-let selectedGame = null;});
+let selectedGame = null;
 
 Object.keys(cpus).forEach(cpu => {
   const option = document.createElement("option");
