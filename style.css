@@ -818,3 +818,46 @@ footer p {
     font-size: 30px;
   }
 }
+
+/* =========================================
+   RigMetric UI Upgrade
+   Step 3 — FPS emphasis
+   ========================================= */
+
+#fps {
+  display: block;
+  padding: 18px 20px;
+  margin: 14px 0 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* Give the important result information more structure */
+#preset,
+#upscaling,
+#limitation,
+#ramCheck {
+  padding: 12px 14px;
+  margin: 8px 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Slightly stronger emphasis for the performance limitation */
+#limitation {
+  font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #fps {
+    font-size: 32px;
+    padding: 16px;
+  }
+}
