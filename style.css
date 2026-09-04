@@ -1116,3 +1116,51 @@ footer p {
     font-size: 15px;
   }
 }
+
+/* =========================================
+   RigMetric UI Upgrade
+   Step 8 — Premium hero section
+   ========================================= */
+
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 520px;
+  height: 260px;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(
+      circle,
+      rgba(124, 242, 154, 0.08),
+      transparent 68%
+    );
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero h1 {
+  text-shadow: 0 8px 35px rgba(0, 0, 0, 0.25);
+}
+
+.hero p {
+  line-height: 1.7;
+}
+
+.eyebrow {
+  box-shadow:
+    0 6px 20px rgba(124, 242, 154, 0.05);
+}
+
+@media (max-width: 600px) {
+  .hero::before {
+    width: 340px;
+    height: 220px;
+  }
+}
