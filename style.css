@@ -861,3 +861,36 @@ footer p {
     padding: 16px;
   }
 }
+
+/* Performance disclaimer */
+
+.performance-disclaimer {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.performance-disclaimer strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.performance-disclaimer p {
+  margin: 0;
+  color: #999;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .performance-disclaimer {
+    padding: 14px;
+  }
+
+  .performance-disclaimer p {
+    font-size: 12.5px;
+  }
+}
