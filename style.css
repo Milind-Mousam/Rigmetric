@@ -21,7 +21,10 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 50% -10%, rgba(86, 212, 255, 0.08), transparent 35%),
+    radial-gradient(circle at 0% 30%, rgba(124, 242, 154, 0.05), transparent 30%),
+    var(--bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
@@ -41,6 +44,8 @@ select {
   width: min(1100px, calc(100% - 32px));
   margin: 0 auto;
 }
+
+/* Header */
 
 header {
   position: sticky;
@@ -92,26 +97,7 @@ header {
   border-radius: 999px;
 }
 
+/* Hero */
+
 .hero {
-  padding: 76px 0 48px;
-  text-align: center;
-}
-
-.eyebrow {
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.hero h1 {
-  margin: 12px auto;
-  max-width: 850px;
-  font-size: clamp(42px, 7vw, 76px);
-  line-height: 0.98;
-  letter-spacing: -3px;
-}
-
-.hero h1 span {
-  background: linear-gradient(90deg, var(--accent), var(--accent
+  padding: 76px 0 48
