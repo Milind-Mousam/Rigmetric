@@ -512,11 +512,17 @@ function getLimitation(game, gpuScore, cpuScore, ram) {
 }
 
 checkButton.addEventListener("click", () => {
-  const gpuName = gpuSelect.value;
-  const cpuName = cpuSelect.value;
+  const gpuName = selectedGpu;
+  const cpuName = selectedCpu;
+  const gameName = selectedGame;
   const ram = Number(ramSelect.value);
-  const gameName = gameSelect.value;
   const resolution = resolutionSelect.value;
+
+  // Make sure the user selected valid search results
+  if (!gpuName || !cpuName || !gameName) {
+    alert("Please select a GPU, CPU, and game from the search results.");
+    return;
+  }
 
   const game = games[gameName];
   const gpuScore = gpus[gpuName];
@@ -528,6 +534,61 @@ checkButton.addEventListener("click", () => {
     cpuScore,
     ram,
     resolution
+  );
+
+  const lowFPS = Math.max(1, Math.round(estimatedFPS * 0.9));
+  const highFPS = Math.round(estimatedFPS * 1.1);
+
+  const gameStatus = getStatus(estimatedFPS);
+  const recommendedPreset = getPreset(game, estimatedFPS);
+  const mainLimitation = getLimitation(
+    game,
+    gpuScore,
+    cpuScore,
+    ram
+  );
+
+  resultGame.textContent = gameName;
+
+  status.textContent = gameStatus;
+  status.className =
+    "status " + gameStatus.toLowerCase().replaceAll(" ", "-");
+
+  resultResolution.textContent =
+    resolution === "720p"
+      ? "1280 × 720"
+      : "1920 × 1080";
+
+  fps.textContent = `${lowFPS}–${highFPS}`;
+
+  preset.textContent = recommendedPreset;
+  upscaling.textContent = game.upscaling;
+  limitation.textContent = mainLimitation;
+
+  ramCheck.textContent =
+    ram < game.baseRam
+      ? "Below target"
+      : "OK";
+
+  resultGpu.textContent = gpuName;
+  resultCpu.textContent = cpuName;
+
+  explanationText.textContent =
+    `Based on your ${gpuName}, ${cpuName}, ${ram} GB RAM, ` +
+    `and ${resolution === "720p" ? "720p" : "1080p"} resolution, ` +
+    `RigMetric estimates around ${lowFPS}–${highFPS} FPS. ` +
+    `The main limitation is likely your ${mainLimitation}. ` +
+    `Actual performance can vary depending on drivers, game updates, ` +
+    `thermal conditions, power limits, background applications, ` +
+    `and in-game settings.`;
+
+  result.hidden = false;
+
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
   );
 
   const lowFPS = Math.max(1, Math.round(estimatedFPS * 0.9));
