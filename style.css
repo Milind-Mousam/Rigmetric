@@ -1164,3 +1164,43 @@ footer p {
     height: 220px;
   }
 }
+
+/* =========================================
+   RigMetric UI Upgrade
+   Step 9 — Premium header
+   ========================================= */
+
+header {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 0.9;
+}
+
+.logo-mark {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.logo:hover .logo-mark {
+  transform: translateY(-1px) rotate(-2deg);
+  box-shadow: 0 0 28px rgba(124, 242, 154, 0.28);
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.025);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.badge:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+}
