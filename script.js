@@ -980,6 +980,70 @@ if (checkButton) {
       resultCpu.textContent =
         cpuName;
 
+      // Hardware warnings
+const hardwareWarnings =
+  document.getElementById("hardwareWarnings");
+
+const hardwareWarningsList =
+  document.getElementById("hardwareWarningsList");
+
+const warnings = [];
+
+
+// RAM warning
+if (ram < game.baseRam) {
+  warnings.push(
+    `This game targets ${game.baseRam} GB of RAM. Your system has ${ram} GB, which may cause stuttering or slowdowns.`
+  );
+}
+
+
+// Integrated GPU warning
+if (
+  gpuName.includes("Vega") ||
+  gpuName.includes("UHD") ||
+  gpuName.includes("Iris")
+) {
+  warnings.push(
+    "Your selected graphics solution uses integrated/shared memory. Performance can be affected by RAM speed, memory configuration, and available system memory."
+  );
+}
+
+
+// Low-end GPU warning
+if (gpuScore < game.baseGpu) {
+  warnings.push(
+    "Your GPU is below this game's target graphics level, so lower settings and/or upscaling may be needed for a smoother experience."
+  );
+}
+
+
+// CPU warning
+if (cpuScore < game.baseCpu) {
+  warnings.push(
+    "Your CPU is below this game's target processor level and may limit performance in CPU-heavy areas."
+  );
+}
+
+
+// Show warnings
+if (warnings.length > 0) {
+
+  hardwareWarningsList.innerHTML =
+    warnings
+      .map(
+        warning => `<li>${warning}</li>`
+      )
+      .join("");
+
+  hardwareWarnings.hidden = false;
+
+} else {
+
+  hardwareWarnings.hidden = true;
+  hardwareWarningsList.innerHTML = "";
+
+}
 
       // Explanation
       explanationText.textContent =
