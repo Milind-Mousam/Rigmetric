@@ -1032,71 +1032,79 @@ footer p {
 
 /* =========================================
    RigMetric UI Upgrade
-   Step 6 — Result hierarchy
+   Step 6 — Result card polish
    ========================================= */
 
-/* Result title */
-#resultGame {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.6px;
-  margin-bottom: 12px;
+#result {
+  padding: 26px;
+  border-radius: 18px;
 }
 
-/* Status badge */
+/* Game title */
+#resultGame {
+  margin-bottom: 12px;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+/* Status */
 #status {
+  display: inline-block;
   padding: 7px 12px;
+  margin-bottom: 16px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 800;
-  background: rgba(255, 255, 255, 0.08);
 }
 
-/* FPS becomes the main visual focus */
+/* FPS display */
 #fps {
-  margin: 18px 0 24px;
-  padding: 22px 18px;
-  border-radius: 16px;
+  margin: 14px 0 22px;
+  padding: 18px;
+  border-radius: 14px;
   text-align: center;
-  font-size: 42px;
-  font-weight: 900;
-  letter-spacing: -1.5px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Information blocks */
+/* Result information */
 #preset,
 #upscaling,
 #limitation,
 #ramCheck {
   margin: 9px 0;
-  padding: 13px 15px;
-  border-radius: 11px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Hardware information */
-#resultGpu,
-#resultCpu {
-  color: #c8c8c8;
-}
-
-/* Explanation */
+/* Explanation area */
 .explanation {
   margin-top: 22px;
 }
 
+/* Disclaimer */
+.performance-disclaimer {
+  margin-top: 18px;
+}
+
 /* Mobile */
 @media (max-width: 600px) {
+  #result {
+    padding: 20px;
+  }
+
   #resultGame {
     font-size: 21px;
   }
 
   #fps {
-    font-size: 36px;
-    padding: 20px 14px;
+    font-size: 32px;
+    padding: 16px;
   }
 }
