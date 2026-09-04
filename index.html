@@ -1,2 +1,820 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RigMetric — PC Game Performance Checker</title>
 
+<meta
+    name="description"
+    content="RigMetric estimates how well your PC can run popular games and suggests graphics settings for smoother gameplay."
+>
+
+<meta name="theme-color" content="#090b10">
+
+<link rel="stylesheet" href="style.css">
+
+</head><body><header>
+    <div class="container nav">
+        <a href="#" class="logo">
+            <div class="logo-mark"></div>
+            <span>RIGMETRIC</span>
+        </a>    <div class="version">v0.1 Prototype</div>
+</div>
+
+</header><main><!-- HERO -->
+
+<section class="hero">
+    <div class="container">
+        <div class="eyebrow">PC PERFORMANCE CHECKER</div>
+
+        <h1>
+            How well can your PC
+            <span>run the game?</span>
+        </h1>
+
+        <p>
+            Select your hardware and a game to get an estimated FPS range,
+            recommended graphics settings, and the component most likely
+            limiting your performance.
+        </p>
+    </div>
+</section>
+
+
+<!-- CHECKER -->
+
+<section>
+    <div class="container">
+
+        <div class="checker">
+
+            <div class="checker-header">
+                <h2>Check your PC</h2>
+                <p>
+                    Enter your hardware and choose the game you want to test.
+                </p>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label for="gpu">Graphics Card / GPU</label>
+
+                    <select id="gpu">
+                        <option value="vega3">AMD Vega 3</option>
+                        <option value="vega8">AMD Vega 8</option>
+                        <option value="uhd620">Intel UHD 620</option>
+                        <option value="gt1030">NVIDIA GT 1030</option>
+                        <option value="gtx750ti">NVIDIA GTX 750 Ti</option>
+                        <option value="gtx1050">NVIDIA GTX 1050</option>
+                        <option value="gtx1050ti">NVIDIA GTX 1050 Ti</option>
+                        <option value="gtx1650">NVIDIA GTX 1650</option>
+                        <option value="gtx1660">NVIDIA GTX 1660</option>
+                        <option value="rtx2060">NVIDIA RTX 2060</option>
+                        <option value="rtx3060">NVIDIA RTX 3060</option>
+                        <option value="rtx4060">NVIDIA RTX 4060</option>
+                        <option value="rx6600">AMD RX 6600</option>
+                        <option value="rx7600">AMD RX 7600</option>
+                    </select>
+                </div>
+
+
+                <div class="field">
+                    <label for="cpu">Processor / CPU</label>
+
+                    <select id="cpu">
+                        <option value="athlon">
+                            AMD Athlon / Entry-Level
+                        </option>
+
+                        <option value="3250u">
+                            AMD Ryzen 3 3250U
+                        </option>
+
+                        <option value="i3old">
+                            Intel Core i3 (Older)
+                        </option>
+
+                        <option value="i3modern">
+                            Intel Core i3 (Modern)
+                        </option>
+
+                        <option value="r3modern">
+                            AMD Ryzen 3 (Modern)
+                        </option>
+
+                        <option value="i5old">
+                            Intel Core i5 (Older)
+                        </option>
+
+                        <option value="r5old">
+                            AMD Ryzen 5 (Older)
+                        </option>
+
+                        <option value="i5modern">
+                            Intel Core i5 (Modern)
+                        </option>
+
+                        <option value="r55600">
+                            AMD Ryzen 5 5600 / Similar
+                        </option>
+
+                        <option value="i7modern">
+                            Intel Core i7 (Modern)
+                        </option>
+
+                        <option value="r7modern">
+                            AMD Ryzen 7 (Modern)
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="field">
+                    <label for="ram">System RAM</label>
+
+                    <select id="ram">
+                        <option value="4">4 GB</option>
+                        <option value="8" selected>8 GB</option>
+                        <option value="12">12 GB</option>
+                        <option value="16">16 GB</option>
+                        <option value="32">32 GB</option>
+                    </select>
+                </div>
+
+
+                <div class="field">
+                    <label for="game">Game</label>
+
+                    <select id="game">
+                        <option value="gtav">
+                            Grand Theft Auto V
+                        </option>
+
+                        <option value="rdr2">
+                            Red Dead Redemption 2
+                        </option>
+
+                        <option value="fh4">
+                            Forza Horizon 4
+                        </option>
+
+                        <option value="fh5">
+                            Forza Horizon 5
+                        </option>
+
+                        <option value="farcry5">
+                            Far Cry 5
+                        </option>
+
+                        <option value="acunity">
+                            Assassin's Creed Unity
+                        </option>
+
+                        <option value="eldenring">
+                            Elden Ring
+                        </option>
+
+                        <option value="cyberpunk">
+                            Cyberpunk 2077
+                        </option>
+
+                        <option value="valorant">
+                            VALORANT
+                        </option>
+
+                        <option value="godofwar">
+                            God of War
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="field">
+                    <label for="resolution">Resolution</label>
+
+                    <select id="resolution">
+                        <option value="720">1280 × 720</option>
+                        <option value="1080" selected>1920 × 1080</option>
+                    </select>
+                </div>
+
+
+                <button
+                    id="checkBtn"
+                    class="check-button"
+                    type="button"
+                >
+                    Check Performance
+                </button>
+
+            </div>
+
+
+            <div class="prototype-note">
+                <strong>Prototype:</strong>
+                Results are currently illustrative estimates.
+                Later versions will use sourced benchmark data and
+                more detailed hardware profiles.
+            </div>
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <section id="result">
+
+            <div class="result-card">
+
+                <div class="result-top">
+
+                    <div>
+                        <h2 id="resultGame">
+                            Performance Result
+                        </h2>
+                    </div>
+
+                    <div id="status" class="status">
+                        PLAYABLE
+                    </div>
+
+                </div>
+
+
+                <div class="fps-box">
+
+                    <div class="fps-label">
+                        Estimated FPS
+                    </div>
+
+                    <div id="fps" class="fps">
+                        30–40
+                    </div>
+
+                    <div class="fps-unit">
+                        frames per second
+                    </div>
+
+                </div>
+
+
+                <div class="result-grid">
+
+                    <div class="result-item">
+                        <small>Resolution</small>
+                        <strong id="resultResolution">1920 × 1080</strong>
+                    </div>
+
+
+                    <div class="result-item">
+                        <small>Recommended Preset</small>
+                        <strong id="preset">Medium</strong>
+                    </div>
+
+
+                    <div class="result-item">
+                        <small>Upscaling</small>
+                        <strong id="upscaling">Optional</strong>
+                    </div>
+
+
+                    <div class="result-item">
+                        <small>Main Limitation</small>
+                        <strong id="limitation">GPU</strong>
+                    </div>
+
+
+                    <div class="result-item">
+                        <small>RAM Check</small>
+                        <strong id="ramCheck">OK</strong>
+                    </div>
+
+
+                    <div class="result-item">
+                        <small>Your GPU</small>
+                        <strong id="resultGpu">AMD Vega 3</strong>
+                    </div>
+
+
+                    <div class="result-item">
+                        <small>Your CPU</small>
+                        <strong id="resultCpu">
+                            AMD Ryzen 3 3250U
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="explanation">
+                    <strong>Why this result?</strong>
+                    <span id="explanationText">
+                        Your estimated performance is based on the selected
+                        hardware, game requirements, resolution and system RAM.
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <h3>
+                    What is RigMetric?
+                </h3>
+
+                <p>
+                    RigMetric is designed to answer a simple question:
+                    "Can my PC actually run this game, and how well?"
+                    Instead of stopping at minimum requirements, RigMetric
+                    aims to provide practical FPS estimates and recommended
+                    settings.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h3>
+                    How does it work?
+                </h3>
+
+                <p>
+                    RigMetric compares your selected CPU, GPU and RAM
+                    against a game's performance profile and estimates
+                    a realistic FPS range for the selected resolution.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h3>
+                    Accuracy matters
+                </h3>
+
+                <p>
+                    FPS can vary depending on drivers, game updates,
+                    temperatures, power limits, background applications
+                    and graphics settings. RigMetric will clearly
+                    distinguish verified benchmark information from
+                    estimates.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h3>
+                    Built for gamers
+                </h3>
+
+                <p>
+                    The goal is to make PC performance information easier
+                    to understand, especially for gamers using older,
+                    budget or integrated graphics hardware.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main><footer><div class="container">
+
+    © 2026 RigMetric · Measure your PC. Know your game.
+
+</div>
+
+</footer><script>
+
+const games = {
+
+    gtav: {
+        name: "Grand Theft Auto V",
+        baseGpu: 35,
+        baseCpu: 35,
+        baseRam: 8,
+        fps720: 55,
+        fps1080: 42,
+        preset: "High",
+        upscaling: "Optional"
+    },
+
+    rdr2: {
+        name: "Red Dead Redemption 2",
+        baseGpu: 55,
+        baseCpu: 50,
+        baseRam: 12,
+        fps720: 40,
+        fps1080: 28,
+        preset: "Low / Medium",
+        upscaling: "FSR Recommended"
+    },
+
+    fh4: {
+        name: "Forza Horizon 4",
+        baseGpu: 38,
+        baseCpu: 35,
+        baseRam: 8,
+        fps720: 60,
+        fps1080: 45,
+        preset: "Medium / High",
+        upscaling: "Optional"
+    },
+
+    fh5: {
+        name: "Forza Horizon 5",
+        baseGpu: 48,
+        baseCpu: 40,
+        baseRam: 8,
+        fps720: 48,
+        fps1080: 34,
+        preset: "Low / Medium",
+        upscaling: "FSR Recommended"
+    },
+
+    farcry5: {
+        name: "Far Cry 5",
+        baseGpu: 42,
+        baseCpu: 40,
+        baseRam: 8,
+        fps720: 50,
+        fps1080: 36,
+        preset: "Medium",
+        upscaling: "Optional"
+    },
+
+    acunity: {
+        name: "Assassin's Creed Unity",
+        baseGpu: 46,
+        baseCpu: 48,
+        baseRam: 8,
+        fps720: 45,
+        fps1080: 32,
+        preset: "Low / Medium",
+        upscaling: "If Available"
+    },
+
+    eldenring: {
+        name: "Elden Ring",
+        baseGpu: 48,
+        baseCpu: 45,
+        baseRam: 12,
+        fps720: 48,
+        fps1080: 38,
+        preset: "Low / Medium",
+        upscaling: "Optional"
+    },
+
+    cyberpunk: {
+        name: "Cyberpunk 2077",
+        baseGpu: 60,
+        baseCpu: 50,
+        baseRam: 16,
+        fps720: 38,
+        fps1080: 25,
+        preset: "Low",
+        upscaling: "FSR / XeSS Recommended"
+    },
+
+    valorant: {
+        name: "VALORANT",
+        baseGpu: 15,
+        baseCpu: 25,
+        baseRam: 8,
+        fps720: 140,
+        fps1080: 110,
+        preset: "Low",
+        upscaling: "Not Needed"
+    },
+
+    godofwar: {
+        name: "God of War",
+        baseGpu: 52,
+        baseCpu: 48,
+        baseRam: 16,
+        fps720: 40,
+        fps1080: 28,
+        preset: "Low",
+        upscaling: "FSR Recommended"
+    }
+
+};
+
+
+const gpus = {
+
+    vega3: {
+        name: "AMD Vega 3",
+        score: 12
+    },
+
+    vega8: {
+        name: "AMD Vega 8",
+        score: 20
+    },
+
+    uhd620: {
+        name: "Intel UHD 620",
+        score: 12
+    },
+
+    gt1030: {
+        name: "NVIDIA GT 1030",
+        score: 22
+    },
+
+    gtx750ti: {
+        name: "NVIDIA GTX 750 Ti",
+        score: 26
+    },
+
+    gtx1050: {
+        name: "NVIDIA GTX 1050",
+        score: 32
+    },
+
+    gtx1050ti: {
+        name: "NVIDIA GTX 1050 Ti",
+        score: 38
+    },
+
+    gtx1650: {
+        name: "NVIDIA GTX 1650",
+        score: 45
+    },
+
+    gtx1660: {
+        name: "NVIDIA GTX 1660",
+        score: 55
+    },
+
+    rtx2060: {
+        name: "NVIDIA RTX 2060",
+        score: 65
+    },
+
+    rtx3060: {
+        name: "NVIDIA RTX 3060",
+        score: 78
+    },
+
+    rtx4060: {
+        name: "NVIDIA RTX 4060",
+        score: 92
+    },
+
+    rx6600: {
+        name: "AMD RX 6600",
+        score: 70
+    },
+
+    rx7600: {
+        name: "AMD RX 7600",
+        score: 85
+    }
+
+};
+
+
+const cpus = {
+
+    athlon: {
+        name: "AMD Athlon / Entry-Level",
+        score: 18
+    },
+
+    "3250u": {
+        name: "AMD Ryzen 3 3250U",
+        score: 22
+    },
+
+    i3old: {
+        name: "Intel Core i3 (Older)",
+        score: 22
+    },
+
+    i3modern: {
+        name: "Intel Core i3 (Modern)",
+        score: 35
+    },
+
+    r3modern: {
+        name: "AMD Ryzen 3 (Modern)",
+        score: 36
+    },
+
+    i5old: {
+        name: "Intel Core i5 (Older)",
+        score: 38
+    },
+
+    r5old: {
+        name: "AMD Ryzen 5 (Older)",
+        score: 42
+    },
+
+    i5modern: {
+        name: "Intel Core i5 (Modern)",
+        score: 55
+    },
+
+    r55600: {
+        name: "AMD Ryzen 5 5600 / Similar",
+        score: 58
+    },
+
+    i7modern: {
+        name: "Intel Core i7 (Modern)",
+        score: 65
+    },
+
+    r7modern: {
+        name: "AMD Ryzen 7 (Modern)",
+        score: 68
+    }
+
+};
+
+
+function calculatePerformance() {
+
+    const gpuKey = document.getElementById("gpu").value;
+    const cpuKey = document.getElementById("cpu").value;
+    const ram = Number(document.getElementById("ram").value);
+    const gameKey = document.getElementById("game").value;
+    const resolution = document.getElementById("resolution").value;
+
+    const gpu = gpus[gpuKey];
+    const cpu = cpus[cpuKey];
+    const game = games[gameKey];
+
+
+    let gpuRatio = gpu.score / game.baseGpu;
+    let cpuRatio = cpu.score / game.baseCpu;
+
+    let multiplier = Math.min(gpuRatio, cpuRatio);
+
+    multiplier = Math.max(0.28, Math.min(1.45, multiplier));
+
+
+    let fps = resolution === "720"
+        ? game.fps720
+        : game.fps1080;
+
+
+    fps *= multiplier;
+
+
+    if (ram < game.baseRam) {
+        fps *= 0.82;
+    } else if (ram >= game.baseRam + 8) {
+        fps *= 1.03;
+    }
+
+
+    if (gameKey === "valorant" && cpu.score < 35) {
+        fps *= 0.72;
+    }
+
+
+    const low = Math.max(1, Math.round(fps * 0.90));
+    const high = Math.max(low + 1, Math.round(fps * 1.10));
+
+
+    let status;
+
+    if (fps >= 60) {
+        status = "PLAYABLE";
+    } else if (fps >= 30) {
+        status = "PLAYABLE";
+    } else if (fps >= 20) {
+        status = "BORDERLINE";
+    } else {
+        status = "NOT RECOMMENDED";
+    }
+
+
+    let preset = game.preset;
+
+    if (status === "BORDERLINE") {
+        preset = "Low";
+    }
+
+    if (status === "NOT RECOMMENDED") {
+        preset = "Very Low / Lowest";
+    }
+
+
+    let limitation = "GPU";
+
+    if (cpuRatio < gpuRatio * 0.9) {
+        limitation = "CPU";
+    }
+
+    if (ram < game.baseRam) {
+        limitation = "RAM";
+    }
+
+
+    let ramCheck;
+
+    if (ram < game.baseRam) {
+        ramCheck = "Below target";
+    } else {
+        ramCheck = "OK";
+    }
+
+
+    const resolutionText = resolution === "720"
+        ? "1280 × 720"
+        : "1920 × 1080";
+
+
+    document.getElementById("resultGame").textContent =
+        game.name;
+
+    document.getElementById("status").textContent =
+        status;
+
+    document.getElementById("resultResolution").textContent =
+        resolutionText;
+
+    document.getElementById("fps").textContent =
+        `${low}–${high}`;
+
+    document.getElementById("preset").textContent =
+        preset;
+
+    document.getElementById("upscaling").textContent =
+        game.upscaling;
+
+    document.getElementById("limitation").textContent =
+        limitation;
+
+    document.getElementById("ramCheck").textContent =
+        ramCheck;
+
+    document.getElementById("resultGpu").textContent =
+        gpu.name;
+
+    document.getElementById("resultCpu").textContent =
+        cpu.name;
+
+
+    let explanation =
+        `RigMetric estimates around ${low}–${high} FPS at ${resolutionText}. ` +
+        `The main performance limitation is likely your ${limitation}. ` +
+        `Actual FPS can vary depending on drivers, game updates, temperatures, ` +
+        `power limits, background applications and graphics settings.`;
+
+    if (ram < game.baseRam) {
+        explanation +=
+            ` Your ${ram} GB of RAM is also below the current target of ` +
+            `${game.baseRam} GB for this game.`;
+    }
+
+
+    document.getElementById("explanationText").textContent =
+        explanation;
+
+
+    const result = document.getElementById("result");
+
+    result.style.display = "block";
+
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
+
+
+document
+    .getElementById("checkBtn")
+    .addEventListener("click", calculatePerformance);
+
+</script></body>
+  </html>
                                                 
