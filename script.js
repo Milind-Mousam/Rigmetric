@@ -335,6 +335,35 @@ const cpuSelect = document.getElementById("cpu");
 const ramSelect = document.getElementById("ram");
 const gameSelect = document.getElementById("game");
 const resolutionSelect = document.getElementById("resolution");
+// Populate dropdowns automatically from the databases
+
+Object.keys(gpus).forEach(gpu => {
+  const option = document.createElement("option");
+  option.value = gpu;
+  option.textContent = gpu;
+  gpuSelect.appendChild(option);
+});
+
+Object.keys(cpus).forEach(cpu => {
+  const option = document.createElement("option");
+  option.value = cpu;
+  option.textContent = cpu;
+  cpuSelect.appendChild(option);
+});
+
+ramOptions.forEach(ram => {
+  const option = document.createElement("option");
+  option.value = ram;
+  option.textContent = `${ram} GB`;
+  ramSelect.appendChild(option);
+});
+
+games.forEach(game => {
+  const option = document.createElement("option");
+  option.value = game.id;
+  option.textContent = game.name;
+  gameSelect.appendChild(option);
+});
 const checkButton = document.getElementById("checkBtn");
 
 const result = document.getElementById("result");
