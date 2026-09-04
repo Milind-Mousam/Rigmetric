@@ -358,10 +358,10 @@ ramOptions.forEach(ram => {
   ramSelect.appendChild(option);
 });
 
-games.forEach(game => {
+Object.keys(games).forEach(game => {
   const option = document.createElement("option");
-  option.value = game.id;
-  option.textContent = game.name;
+  option.value = game;
+  option.textContent = game;
   gameSelect.appendChild(option);
 });
 const checkButton = document.getElementById("checkBtn");
