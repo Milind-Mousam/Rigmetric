@@ -1284,3 +1284,7 @@ header {
   position: relative;
   z-index: 1;
 }
+
+.fps-box {
+  box-shadow: 0 0 35px rgba(124, 242, 154, 0.25);
+}
