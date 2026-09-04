@@ -938,14 +938,14 @@ if (checkButton) {
 
       // Calculate FPS
       const estimatedFPS =
-        calculateFPS(
-          game,
-          gpuScore,
-          cpuScore,
-          ram,
-          resolution
-        );
-
+  calculateFPS(
+    game,
+    gpuName,
+    gpuScore,
+    cpuScore,
+    ram,
+    resolution
+  );
 
       // FPS range
       const lowFPS =
