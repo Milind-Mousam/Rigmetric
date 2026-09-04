@@ -678,6 +678,7 @@ setupSearch(
 
 function calculateFPS(
   game,
+  gpuName,
   gpuScore,
   cpuScore,
   ram,
