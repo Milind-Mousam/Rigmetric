@@ -362,20 +362,27 @@ function setupSearch(input, resultsBox, items, onSelect) {
 
     matches.slice(0, 8).forEach(item => {
       const result = document.createElement("div");
+
       result.className = "search-result-item";
       result.textContent = item;
 
       result.addEventListener("mousedown", (event) => {
         event.preventDefault();
+
         input.value = item;
         onSelect(item);
-        resultsBox.innerHTML = "";
+
+        resultsBox.style.display = "none";
       });
 
       resultsBox.appendChild(result);
     });
 
-    resultsBox.style.display = matches.length ? "block" : "none";
+    if (matches.length > 0) {
+      resultsBox.style.display = "block";
+    } else {
+      resultsBox.style.display = "none";
+    }
   }
 
   input.addEventListener("input", () => {
@@ -390,7 +397,7 @@ function setupSearch(input, resultsBox, items, onSelect) {
   input.addEventListener("blur", () => {
     setTimeout(() => {
       resultsBox.style.display = "none";
-    }, 150);
+    }, 200);
   });
 }
 
