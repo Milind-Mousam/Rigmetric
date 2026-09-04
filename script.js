@@ -427,12 +427,6 @@ setupSearch(
   }
 );
 
-Object.keys(games).forEach(game => {
-  const option = document.createElement("option");
-  option.value = game;
-  option.textContent = game;
-  gameSelect.appendChild(option);
-});
 const checkButton = document.getElementById("checkBtn");
 
 const result = document.getElementById("result");
