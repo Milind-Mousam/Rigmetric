@@ -285,17 +285,49 @@ const gpus = {
 const cpus = {
   "AMD Athlon / entry-level": 18,
   "AMD Ryzen 3 3250U": 22,
+  "Intel Celeron / Pentium (older)": 20,
   "Intel Core i3 (older)": 22,
-  "Intel Core i3 (modern)": 35,
-  "AMD Ryzen 3 (modern)": 36,
   "Intel Core i5 (older)": 38,
-  "AMD Ryzen 5 (older)": 42,
-  "Intel Core i5 (modern)": 55,
+  "Intel Core i7 (older)": 45,
+
+  "Intel Core i3-10100 / similar": 40,
+  "Intel Core i5-10400 / similar": 50,
+  "Intel Core i7-10700 / similar": 58,
+
+  "AMD Ryzen 3 3100 / similar": 40,
+  "AMD Ryzen 5 3600 / similar": 52,
+  "AMD Ryzen 7 3700X / similar": 58,
+
+  "Intel Core i3-12100 / similar": 50,
+  "Intel Core i5-12400 / similar": 62,
+  "Intel Core i5-12600K / similar": 68,
+  "Intel Core i7-12700K / similar": 78,
+
   "AMD Ryzen 5 5600 / similar": 58,
-  "Intel Core i7 (modern)": 65,
+  "AMD Ryzen 5 7600 / similar": 72,
+  "AMD Ryzen 7 5700X / similar": 65,
+  "AMD Ryzen 7 5800X3D / similar": 75,
+  "AMD Ryzen 7 7800X3D / similar": 85,
+
+  "Intel Core i5-13400 / similar": 68,
+  "Intel Core i5-13600K / similar": 78,
+  "Intel Core i7-13700K / similar": 88,
+
+  "AMD Ryzen 5 9600X / similar": 78,
+  "AMD Ryzen 7 9700X / similar": 88,
+  "AMD Ryzen 7 9800X3D / similar": 95,
+
+  "Intel Core i5-14600K / similar": 82,
+  "Intel Core i7-14700K / similar": 92,
+  "Intel Core i9-14900K / similar": 98,
+
+  "Intel Core Ultra 5 / modern": 75,
+  "Intel Core Ultra 7 / modern": 88,
+  "Intel Core Ultra 9 / modern": 98,
+
+  "AMD Ryzen 5 (modern)": 55,
   "AMD Ryzen 7 (modern)": 68
 };
-
 const ramOptions = [4, 8, 12, 16, 32];
 
 const gpuSelect = document.getElementById("gpu");
