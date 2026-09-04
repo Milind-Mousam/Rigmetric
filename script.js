@@ -330,19 +330,23 @@ const cpus = {
 };
 const ramOptions = [4, 8, 12, 16, 32];
 
-const gpuSelect = document.getElementById("gpu");
-const cpuSelect = document.getElementById("cpu");
-const ramSelect = document.getElementById("ram");
-const gameSelect = document.getElementById("game");
-const resolutionSelect = document.getElementById("resolution");
-// Populate dropdowns automatically from the databases
+const gpuSearch = document.getElementById("gpuSearch");
+const gpuResults = document.getElementById("gpuResults");
 
-Object.keys(gpus).forEach(gpu => {
-  const option = document.createElement("option");
-  option.value = gpu;
-  option.textContent = gpu;
-  gpuSelect.appendChild(option);
-});
+const cpuSearch = document.getElementById("cpuSearch");
+const cpuResults = document.getElementById("cpuResults");
+
+const ramSelect = document.getElementById("ram");
+
+const gameSearch = document.getElementById("gameSearch");
+const gameResults = document.getElementById("gameResults");
+
+const resolutionSelect = document.getElementById("resolution");
+
+// Currently selected hardware/game
+let selectedGpu = null;
+let selectedCpu = null;
+let selectedGame = null;});
 
 Object.keys(cpus).forEach(cpu => {
   const option = document.createElement("option");
