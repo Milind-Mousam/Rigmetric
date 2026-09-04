@@ -676,6 +676,16 @@ setupSearch(
 // FPS CALCULATION
 // ==========================================
 
+function gpuNameIsIntegrated(gpuName) {
+
+  return (
+    gpuName.includes("Vega") ||
+    gpuName.includes("UHD") ||
+    gpuName.includes("Iris")
+  );
+
+}
+
 function calculateFPS(
   game,
   gpuName,
@@ -784,7 +794,7 @@ function calculateFPS(
 
   // Integrated graphics are especially sensitive to memory bandwidth
   const integratedGPU =
-    gpuNameIsIntegrated(gpuScore);
+    gpuNameIsIntegrated(gpuName);
 
 
   if (integratedGPU && ram <= 8) {
