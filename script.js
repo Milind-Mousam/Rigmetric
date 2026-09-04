@@ -1,1 +1,286 @@
+const games = {
+  "GTA V": {
+    baseGpu: 35,
+    baseCpu: 35,
+    baseRam: 8,
+    fps720: 55,
+    fps1080: 42,
+    preset: "High",
+    upscaling: "Optional"
+  },
+  "Red Dead Redemption 2": {
+    baseGpu: 55,
+    baseCpu: 50,
+    baseRam: 12,
+    fps720: 40,
+    fps1080: 28,
+    preset: "Low / Medium",
+    upscaling: "FSR Recommended"
+  },
+  "Forza Horizon 4": {
+    baseGpu: 38,
+    baseCpu: 35,
+    baseRam: 8,
+    fps720: 60,
+    fps1080: 45,
+    preset: "Medium / High",
+    upscaling: "Optional"
+  },
+  "Forza Horizon 5": {
+    baseGpu: 48,
+    baseCpu: 40,
+    baseRam: 8,
+    fps720: 48,
+    fps1080: 34,
+    preset: "Low / Medium",
+    upscaling: "FSR Recommended"
+  },
+  "Far Cry 5": {
+    baseGpu: 42,
+    baseCpu: 40,
+    baseRam: 8,
+    fps720: 50,
+    fps1080: 36,
+    preset: "Medium",
+    upscaling: "Optional"
+  },
+  "Assassin's Creed Unity": {
+    baseGpu: 46,
+    baseCpu: 48,
+    baseRam: 8,
+    fps720: 45,
+    fps1080: 32,
+    preset: "Low / Medium",
+    upscaling: "If Available"
+  },
+  "Elden Ring": {
+    baseGpu: 48,
+    baseCpu: 45,
+    baseRam: 12,
+    fps720: 48,
+    fps1080: 38,
+    preset: "Low / Medium",
+    upscaling: "Optional"
+  },
+  "Cyberpunk 2077": {
+    baseGpu: 60,
+    baseCpu: 50,
+    baseRam: 16,
+    fps720: 38,
+    fps1080: 25,
+    preset: "Low",
+    upscaling: "FSR / XeSS Recommended"
+  },
+  "VALORANT": {
+    baseGpu: 15,
+    baseCpu: 25,
+    baseRam: 8,
+    fps720: 140,
+    fps1080: 110,
+    preset: "Low",
+    upscaling: "Not Needed"
+  },
+  "God of War": {
+    baseGpu: 52,
+    baseCpu: 48,
+    baseRam: 16,
+    fps720: 40,
+    fps1080: 28,
+    preset: "Low",
+    upscaling: "FSR Recommended"
+  }
+};
 
+const gpus = {
+  "AMD Vega 3": 12,
+  "AMD Vega 8": 20,
+  "Intel UHD 620": 12,
+  "NVIDIA GT 1030": 22,
+  "NVIDIA GTX 750 Ti": 26,
+  "NVIDIA GTX 1050": 32,
+  "NVIDIA GTX 1050 Ti": 38,
+  "NVIDIA GTX 1650": 45,
+  "NVIDIA GTX 1660": 55,
+  "NVIDIA RTX 2060": 65,
+  "NVIDIA RTX 3060": 78,
+  "NVIDIA RTX 4060": 92,
+  "AMD RX 6600": 70,
+  "AMD RX 7600": 85
+};
+
+const cpus = {
+  "AMD Athlon / entry-level": 18,
+  "AMD Ryzen 3 3250U": 22,
+  "Intel Core i3 (older)": 22,
+  "Intel Core i3 (modern)": 35,
+  "AMD Ryzen 3 (modern)": 36,
+  "Intel Core i5 (older)": 38,
+  "AMD Ryzen 5 (older)": 42,
+  "Intel Core i5 (modern)": 55,
+  "AMD Ryzen 5 5600 / similar": 58,
+  "Intel Core i7 (modern)": 65,
+  "AMD Ryzen 7 (modern)": 68
+};
+
+const ramOptions = [4, 8, 12, 16, 32];
+
+const gpuSelect = document.getElementById("gpu");
+const cpuSelect = document.getElementById("cpu");
+const ramSelect = document.getElementById("ram");
+const gameSelect = document.getElementById("game");
+const resolutionSelect = document.getElementById("resolution");
+const checkButton = document.getElementById("checkBtn");
+
+const result = document.getElementById("result");
+const resultGame = document.getElementById("resultGame");
+const status = document.getElementById("status");
+const resultResolution = document.getElementById("resultResolution");
+const fps = document.getElementById("fps");
+const preset = document.getElementById("preset");
+const upscaling = document.getElementById("upscaling");
+const limitation = document.getElementById("limitation");
+const ramCheck = document.getElementById("ramCheck");
+const resultGpu = document.getElementById("resultGpu");
+const resultCpu = document.getElementById("resultCpu");
+const explanationText = document.getElementById("explanationText");
+
+function calculateFPS(game, gpuScore, cpuScore, ram, resolution) {
+  const gpuRatio = gpuScore / game.baseGpu;
+  const cpuRatio = cpuScore / game.baseCpu;
+
+  let multiplier = Math.min(gpuRatio, cpuRatio);
+
+  multiplier = Math.max(0.28, Math.min(multiplier, 1.45));
+
+  let estimatedFPS =
+    resolution === "720p"
+      ? game.fps720 * multiplier
+      : game.fps1080 * multiplier;
+
+  if (ram < game.baseRam) {
+    estimatedFPS *= 0.82;
+  } else if (ram >= game.baseRam + 8) {
+    estimatedFPS *= 1.03;
+  }
+
+  if (game === games["VALORANT"] && cpuScore < 35) {
+    estimatedFPS *= 0.72;
+  }
+
+  return Math.max(5, estimatedFPS);
+}
+
+function getStatus(estimatedFPS) {
+  if (estimatedFPS >= 60) {
+    return "PLAYABLE";
+  }
+
+  if (estimatedFPS >= 30) {
+    return "PLAYABLE";
+  }
+
+  if (estimatedFPS >= 20) {
+    return "BORDERLINE";
+  }
+
+  return "NOT RECOMMENDED";
+}
+
+function getPreset(game, estimatedFPS) {
+  if (estimatedFPS < 20) {
+    return "Very Low / Lowest";
+  }
+
+  if (estimatedFPS < 30) {
+    return "Low";
+  }
+
+  return game.preset;
+}
+
+function getLimitation(game, gpuScore, cpuScore, ram) {
+  const gpuRatio = gpuScore / game.baseGpu;
+  const cpuRatio = cpuScore / game.baseCpu;
+
+  if (ram < game.baseRam) {
+    return "RAM";
+  }
+
+  if (cpuRatio < gpuRatio * 0.9) {
+    return "CPU";
+  }
+
+  return "GPU";
+}
+
+checkButton.addEventListener("click", () => {
+  const gpuName = gpuSelect.value;
+  const cpuName = cpuSelect.value;
+  const ram = Number(ramSelect.value);
+  const gameName = gameSelect.value;
+  const resolution = resolutionSelect.value;
+
+  const game = games[gameName];
+  const gpuScore = gpus[gpuName];
+  const cpuScore = cpus[cpuName];
+
+  const estimatedFPS = calculateFPS(
+    game,
+    gpuScore,
+    cpuScore,
+    ram,
+    resolution
+  );
+
+  const lowFPS = Math.max(1, Math.round(estimatedFPS * 0.9));
+  const highFPS = Math.round(estimatedFPS * 1.1);
+
+  const gameStatus = getStatus(estimatedFPS);
+  const recommendedPreset = getPreset(game, estimatedFPS);
+  const mainLimitation = getLimitation(
+    game,
+    gpuScore,
+    cpuScore,
+    ram
+  );
+
+  resultGame.textContent = gameName;
+
+  status.textContent = gameStatus;
+  status.className = "status " + gameStatus.toLowerCase().replaceAll(" ", "-");
+
+  resultResolution.textContent =
+    resolution === "720p"
+      ? "1280 × 720"
+      : "1920 × 1080";
+
+  fps.textContent = `${lowFPS}–${highFPS}`;
+
+  preset.textContent = recommendedPreset;
+  upscaling.textContent = game.upscaling;
+  limitation.textContent = mainLimitation;
+
+  ramCheck.textContent =
+    ram < game.baseRam
+      ? "Below target"
+      : "OK";
+
+  resultGpu.textContent = gpuName;
+  resultCpu.textContent = cpuName;
+
+  explanationText.textContent =
+    `Based on your ${gpuName}, ${cpuName}, ${ram} GB RAM, ` +
+    `and ${resolution === "720p" ? "720p" : "1080p"} resolution, ` +
+    `RigMetric estimates around ${lowFPS}–${highFPS} FPS. ` +
+    `The main limitation is likely your ${mainLimitation}. ` +
+    `Actual performance can vary depending on drivers, game updates, ` +
+    `thermal conditions, power limits, background applications, ` +
+    `and in-game settings.`;
+
+  result.hidden = false;
+
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
