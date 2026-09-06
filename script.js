@@ -128,6 +128,7 @@ function gpuNameIsIntegrated(gpuName) {
 
 function calculateFPS(
   game,
+  gameName,
   gpuName,
   gpuScore,
   cpuScore,
@@ -143,9 +144,7 @@ function calculateFPS(
     cpuScore / game.baseCpu;
 
 
-  // Most games are primarily limited by either GPU or CPU.
-  // We use a weighted combination instead of always taking
-  // whichever ratio is lower.
+  // Default GPU/CPU weighting
   let gpuWeight = 0.65;
   let cpuWeight = 0.35;
 
@@ -163,7 +162,7 @@ function calculateFPS(
   ];
 
 
-  if (cpuSensitiveGames.includes(game.name)) {
+  if (cpuSensitiveGames.includes(gameName)) {
     gpuWeight = 0.45;
     cpuWeight = 0.55;
   }
@@ -183,7 +182,7 @@ function calculateFPS(
   ];
 
 
-  if (gpuHeavyGames.includes(game.name)) {
+  if (gpuHeavyGames.includes(gameName)) {
     gpuWeight = 0.75;
     cpuWeight = 0.25;
   }
@@ -215,7 +214,6 @@ function calculateFPS(
     const ramDeficit =
       game.baseRam - ram;
 
-    // Larger RAM shortages receive a stronger penalty
     if (ramDeficit >= 8) {
       estimatedFPS *= 0.72;
     } else {
