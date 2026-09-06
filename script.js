@@ -419,6 +419,7 @@ if (checkButton) {
         finalFPS =
           calculateFPS(
             game,
+            gameName, 
             gpuName,
             gpuScore,
             cpuScore,
