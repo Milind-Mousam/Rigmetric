@@ -506,6 +506,42 @@ const cpus = {
 
 const ramOptions = [4, 8, 12, 16, 32];
 
+// ==========================================
+// BENCHMARK DATABASE
+// ==========================================
+// Real benchmark records will be added here.
+// Do not add estimated values to this database.
+
+const benchmarks = [
+  // Example structure:
+  //
+  // {
+  //   game: "Cyberpunk 2077",
+  //   gpu: "NVIDIA RTX 3060",
+  //   cpu: "AMD Ryzen 5 5600 / similar",
+  //   resolution: "1080p",
+  //   preset: "Low",
+  //   upscaling: "Off",
+  //   averageFPS: 72,
+  //   onePercentLow: 58,
+  //   source: "Benchmark source name",
+  //   sourceType: "benchmark"
+  // }
+];
+
+// ==========================================
+// BENCHMARK LOOKUP
+// ==========================================
+
+function findBenchmark(game, gpu, cpu, resolution) {
+  return benchmarks.find(benchmark =>
+    benchmark.game === game &&
+    benchmark.gpu === gpu &&
+    benchmark.cpu === cpu &&
+    benchmark.resolution === resolution
+  );
+}
+
 
 // ==========================================
 // DOM ELEMENTS
