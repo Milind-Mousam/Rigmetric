@@ -983,6 +983,14 @@ if (checkButton) {
 
 
       // Calculate FPS
+
+      const benchmark = findBenchmark(
+  gameName,
+  gpuName,
+  cpuName,
+  resolution
+);
+
       const estimatedFPS =
   calculateFPS(
     game,
